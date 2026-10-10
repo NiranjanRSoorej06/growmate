@@ -1,0 +1,32 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    background: #f2f4ef;
+    color: #17231c;
+    -webkit-text-size-adjust: 100%;
+  }
+  body {
+    @apply font-sans antialiased;
+  }
+  h1,
+  h2,
+  h3 {
+    @apply font-display tracking-tight;
+  }
+  :focus-visible {
+    outline: 3px solid #2f5d3a;
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .input {
+    @apply w-full rounded-xl border border-ink/20 bg-white px-3 py-2.5 text-base text-ink placeholder:text-ink/40 focus:border-moss;
+  }
+  .panel {
+    @apply rounded-3xl bg-white p-5 shadow-[0_1px_0_rgba(23,35,28,0.08)] ring-1 ring-ink/10 sm:p-6;
+  }
+}

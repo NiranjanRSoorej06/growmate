@@ -1,0 +1,473 @@
+[
+  {
+    "id": "plant_001",
+    "name": "Tulsi (holy basil)",
+    "category": "herbs",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.3,
+    "difficulty": "beginner",
+    "days_to_harvest": 60,
+    "water": "medium",
+    "seasons": [
+      "monsoon",
+      "summer",
+      "year-round"
+    ],
+    "care_summary": "Grow in a pot with drainage. Water when the top of the soil feels dry and pinch the tips to keep it bushy."
+  },
+  {
+    "id": "plant_002",
+    "name": "Mint",
+    "category": "herbs",
+    "sunlight": [
+      "partial",
+      "shade"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.3,
+    "difficulty": "beginner",
+    "days_to_harvest": 40,
+    "water": "high",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Keep it in its own pot because it spreads. Keep the soil evenly moist and out of harsh afternoon sun."
+  },
+  {
+    "id": "plant_003",
+    "name": "Coriander",
+    "category": "herbs",
+    "sunlight": [
+      "partial",
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.3,
+    "difficulty": "beginner",
+    "days_to_harvest": 45,
+    "water": "medium",
+    "seasons": [
+      "winter",
+      "monsoon"
+    ],
+    "care_summary": "Sow seeds directly in a wide pot. Prefers cooler weather and bolts quickly in strong heat."
+  },
+  {
+    "id": "plant_004",
+    "name": "Curry leaf",
+    "category": "herbs",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.6,
+    "difficulty": "beginner",
+    "days_to_harvest": 180,
+    "water": "medium",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Slow to establish. Use a large pot, water moderately, and avoid waterlogging."
+  },
+  {
+    "id": "plant_005",
+    "name": "Lemongrass",
+    "category": "herbs",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.5,
+    "difficulty": "beginner",
+    "days_to_harvest": 90,
+    "water": "medium",
+    "seasons": [
+      "monsoon",
+      "summer"
+    ],
+    "care_summary": "Plant a clump in a deep pot. Water regularly and harvest outer stalks."
+  },
+  {
+    "id": "plant_006",
+    "name": "Aloe vera",
+    "category": "herbs",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.2,
+    "difficulty": "beginner",
+    "days_to_harvest": 120,
+    "water": "low",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Use gritty, fast-draining soil and let it dry between waterings. Rots easily if kept wet."
+  },
+  {
+    "id": "plant_007",
+    "name": "Green chilli",
+    "category": "vegetables",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.4,
+    "difficulty": "beginner",
+    "days_to_harvest": 90,
+    "water": "medium",
+    "seasons": [
+      "monsoon",
+      "winter"
+    ],
+    "care_summary": "Use a well-draining mix and a pot at least 30 cm deep. Water when the topsoil dries and watch for curling leaves."
+  },
+  {
+    "id": "plant_008",
+    "name": "Tomato",
+    "category": "vegetables",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.6,
+    "difficulty": "intermediate",
+    "days_to_harvest": 80,
+    "water": "medium",
+    "seasons": [
+      "winter"
+    ],
+    "care_summary": "Needs 6+ hours of sun and a stake or cage. Water at the base, evenly, to avoid split fruit."
+  },
+  {
+    "id": "plant_009",
+    "name": "Brinjal (eggplant)",
+    "category": "vegetables",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.7,
+    "difficulty": "intermediate",
+    "days_to_harvest": 100,
+    "water": "medium",
+    "seasons": [
+      "monsoon",
+      "winter"
+    ],
+    "care_summary": "Large pot, rich soil and steady watering. Check leaf undersides regularly for pests."
+  },
+  {
+    "id": "plant_010",
+    "name": "Okra (lady's finger)",
+    "category": "vegetables",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.6,
+    "difficulty": "beginner",
+    "days_to_harvest": 60,
+    "water": "medium",
+    "seasons": [
+      "summer",
+      "monsoon"
+    ],
+    "care_summary": "Sow seeds directly in warm weather. Harvest pods young, every couple of days."
+  },
+  {
+    "id": "plant_011",
+    "name": "Spinach",
+    "category": "vegetables",
+    "sunlight": [
+      "partial",
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.3,
+    "difficulty": "beginner",
+    "days_to_harvest": 35,
+    "water": "medium",
+    "seasons": [
+      "winter"
+    ],
+    "care_summary": "Shallow, wide pot. Keep the soil moist and harvest outer leaves first."
+  },
+  {
+    "id": "plant_012",
+    "name": "Malabar spinach (Basella)",
+    "category": "vegetables",
+    "sunlight": [
+      "partial",
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.4,
+    "difficulty": "beginner",
+    "days_to_harvest": 50,
+    "water": "medium",
+    "seasons": [
+      "monsoon",
+      "summer"
+    ],
+    "care_summary": "A climber. Give it a trellis or string and keep it moist. Handles heat and humidity well."
+  },
+  {
+    "id": "plant_013",
+    "name": "Amaranth (cheera)",
+    "category": "vegetables",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.3,
+    "difficulty": "beginner",
+    "days_to_harvest": 30,
+    "water": "medium",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Fast leafy green. Sow thickly, thin seedlings, and harvest young leaves often."
+  },
+  {
+    "id": "plant_014",
+    "name": "Cucumber",
+    "category": "vegetables",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": false,
+    "min_space_sqm": 1.0,
+    "difficulty": "intermediate",
+    "days_to_harvest": 60,
+    "water": "high",
+    "seasons": [
+      "summer",
+      "monsoon"
+    ],
+    "care_summary": "Needs a trellis and plenty of water. Needs space and sun to fruit well."
+  },
+  {
+    "id": "plant_015",
+    "name": "Bitter gourd",
+    "category": "vegetables",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": false,
+    "min_space_sqm": 1.0,
+    "difficulty": "intermediate",
+    "days_to_harvest": 70,
+    "water": "medium",
+    "seasons": [
+      "summer",
+      "monsoon"
+    ],
+    "care_summary": "Climbing vine that needs a sturdy trellis and consistent moisture."
+  },
+  {
+    "id": "plant_016",
+    "name": "Radish",
+    "category": "vegetables",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.2,
+    "difficulty": "beginner",
+    "days_to_harvest": 30,
+    "water": "medium",
+    "seasons": [
+      "winter"
+    ],
+    "care_summary": "One of the fastest crops. Sow in a deep pot, keep evenly moist, and harvest when roots reach about 3 cm."
+  },
+  {
+    "id": "plant_017",
+    "name": "Marigold",
+    "category": "flowers",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.2,
+    "difficulty": "beginner",
+    "days_to_harvest": 60,
+    "water": "low",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Easy flowers that also help deter some pests. Water at the base and deadhead spent blooms."
+  },
+  {
+    "id": "plant_018",
+    "name": "Hibiscus",
+    "category": "flowers",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.6,
+    "difficulty": "beginner",
+    "days_to_harvest": 120,
+    "water": "medium",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Large pot with rich soil. Water regularly and prune lightly after flowering."
+  },
+  {
+    "id": "plant_019",
+    "name": "Jasmine",
+    "category": "flowers",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.5,
+    "difficulty": "intermediate",
+    "days_to_harvest": 180,
+    "water": "medium",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Give it support to climb. Water regularly but let the top soil dry slightly."
+  },
+  {
+    "id": "plant_020",
+    "name": "Zinnia",
+    "category": "flowers",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.2,
+    "difficulty": "beginner",
+    "days_to_harvest": 55,
+    "water": "low",
+    "seasons": [
+      "monsoon",
+      "winter"
+    ],
+    "care_summary": "Direct sow and keep the sun on it. Cut flowers often to encourage more blooms."
+  },
+  {
+    "id": "plant_021",
+    "name": "Papaya",
+    "category": "fruits",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": false,
+    "min_space_sqm": 2.0,
+    "difficulty": "intermediate",
+    "days_to_harvest": 240,
+    "water": "medium",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Fast-growing and needs sun and space. Avoid standing water around the roots."
+  },
+  {
+    "id": "plant_022",
+    "name": "Banana",
+    "category": "fruits",
+    "sunlight": [
+      "full",
+      "partial"
+    ],
+    "container_friendly": false,
+    "min_space_sqm": 3.0,
+    "difficulty": "intermediate",
+    "days_to_harvest": 300,
+    "water": "high",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Needs space, rich soil and plenty of water. Remove dead leaves and extra suckers."
+  },
+  {
+    "id": "plant_023",
+    "name": "Lemon",
+    "category": "fruits",
+    "sunlight": [
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 1.0,
+    "difficulty": "intermediate",
+    "days_to_harvest": 365,
+    "water": "medium",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Large pot with excellent drainage. Water deeply but infrequently."
+  },
+  {
+    "id": "plant_024",
+    "name": "Snake plant",
+    "category": "ornamentals",
+    "sunlight": [
+      "shade",
+      "partial",
+      "full"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.2,
+    "difficulty": "beginner",
+    "days_to_harvest": null,
+    "water": "low",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Very tolerant of low light. Water only when the soil is fully dry."
+  },
+  {
+    "id": "plant_025",
+    "name": "Money plant (pothos)",
+    "category": "ornamentals",
+    "sunlight": [
+      "shade",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.2,
+    "difficulty": "beginner",
+    "days_to_harvest": null,
+    "water": "low",
+    "seasons": [
+      "year-round"
+    ],
+    "care_summary": "Grows in soil or water. Keep it out of direct sun and trim to keep it tidy."
+  },
+  {
+    "id": "plant_026",
+    "name": "Ferns",
+    "category": "ornamentals",
+    "sunlight": [
+      "shade",
+      "partial"
+    ],
+    "container_friendly": true,
+    "min_space_sqm": 0.3,
+    "difficulty": "intermediate",
+    "days_to_harvest": null,
+    "water": "high",
+    "seasons": [
+      "monsoon"
+    ],
+    "care_summary": "Keep the soil consistently moist and the air humid. Avoid direct sun."
+  }
+]

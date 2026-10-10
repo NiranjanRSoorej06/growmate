@@ -1,0 +1,50 @@
+# Run GrowMate in containers.
+#
+#   docker compose up --build                  # uses Ollama already running on your host
+#   docker compose --profile ollama up --build # also runs Ollama in a container
+#
+# Open http://localhost:8080
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: backend/Dockerfile
+    environment:
+      OLLAMA_URL: ${OLLAMA_URL:-http://host.docker.internal:11434}
+      OLLAMA_MODEL: ${OLLAMA_MODEL:-gemma3:4b}
+      OLLAMA_TIMEOUT: ${OLLAMA_TIMEOUT:-180}
+      DATABASE_PATH: /app/storage/growmate.db
+      CATALOG_PATH: /app/data/plant_catalog.json
+      SENTRY_DSN: ${SENTRY_DSN:-}
+      SERPAPI_KEY: ${SERPAPI_KEY:-}
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    volumes:
+      - growmate-data:/app/storage
+    # Reachable only from the frontend container, not published to the host.
+    expose:
+      - "8000"
+
+  frontend:
+    build:
+      context: ./frontend
+    depends_on:
+      - backend
+    ports:
+      - "8080:80"
+
+  # Optional: run Ollama in Docker instead of on the host.
+  # Set OLLAMA_URL=http://ollama:11434 and pull the model:
+  #   docker compose exec ollama ollama pull gemma3:4b
+  ollama:
+    image: ollama/ollama:latest
+    profiles: ["ollama"]
+    volumes:
+      - ollama-models:/root/.ollama
+    # Not published: Ollama's API must never be exposed to the public internet.
+    expose:
+      - "11434"
+
+volumes:
+  growmate-data:
+  ollama-models:
