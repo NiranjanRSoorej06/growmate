@@ -1,47 +1,39 @@
 # Optional. Render's declarative infrastructure config.
-# Deploy from the web UI instead if you prefer:
-#   - Static Site: connect repo, build `npm run build`, publish `frontend/dist`
-#   - Web Service: Dockerfile path `backend/Dockerfile`, set the env vars below
-# Set values in your Render dashboard under "Environment variables".
+# Set secret values in the Render dashboard.
 
 services:
-  - type: static
+  - type: web
     name: growmate-frontend
+    runtime: static
     rootDir: frontend
-    buildCommand: npm run build
-    publishDir: dist
+    buildCommand: npm ci && npm run build
+    staticPublishPath: dist
     envVars:
       - key: VITE_API_URL
-        valueFrom:
-          deploySetting:
-            name: VITE_API_URL  # e.g. https://growmate-api.onrender.com
+        sync: false
       - key: VITE_SENTRY_DSN
-        valueFrom:
-          deploySetting:
-            name: VITE_SENTRY_DSN  # opt-in
+        sync: false
 
   - type: web
     name: growmate-api
-    env: docker
+    runtime: docker
     dockerfilePath: backend/Dockerfile
-    numInstances: 1  # SQLite is single-writer; multiple replicas can corrupt the db
+    numInstances: 1
     healthCheckPath: /api/v1/health
     envVars:
       - key: DATABASE_PATH
         value: /data/growmate.db
       - key: OLLAMA_URL
-        value: http://localhost:11434  # leave default for local dev; set your own Ollama host for cloud AI
+        value: http://localhost:11434
       - key: CORS_ORIGINS
-        valueFrom:
-          deploySetting:
-            name: CORS_ORIGINS  # e.g. https://growmate-frontend.onrender.com
+        sync: false
       - key: OLLAMA_TIMEOUT
         value: "180"
       - key: SENTRY_DSN
-        sync: false  # set in your Render dashboard (never commit this)
+        sync: false
       - key: SERPAPI_KEY
-        sync: false  # set in your Render dashboard (never commit this)
+        sync: false
     disk:
-      - name: growmate-data
-        mountPath: /data
-        sizeGB: 1
+      name: growmate-data
+      mountPath: /data
+      sizeGB: 1
