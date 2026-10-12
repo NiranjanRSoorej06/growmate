@@ -1,5 +1,9 @@
 # Run GrowMate in containers.
 #
+# Use this for self-hosting on a VPS or your own machine (with Ollama running on
+# the same host), not for Render: Render Web Services build from a single Dockerfile,
+# not from docker-compose. For Render, use the backend Dockerfile directly.
+#
 #   docker compose up --build                  # uses Ollama already running on your host
 #   docker compose --profile ollama up --build # also runs Ollama in a container
 #

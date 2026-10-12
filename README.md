@@ -66,6 +66,77 @@ docker compose --profile ollama up --build  # also runs Ollama in a container
 
 Open <http://localhost:8080>. With the `ollama` profile, set `OLLAMA_URL=http://ollama:11434` in `.env` and run `docker compose exec ollama ollama pull gemma3:4b`.
 
+## Deploying to Render
+
+GrowMate is a local-first app: **Gemma runs on your machine through Ollama**, and the
+backend and frontend are ordinary containers. For the Hacktoberfest challenge you can
+host the web app on Render while keeping Gemma local on your laptop.
+
+### Two tiers, honestly
+
+| Tier | What runs where | AI | Good for |
+|---|---|---|---|
+| **Local (primary)** | Backend + frontend + Ollama on your laptop | Gemma works (verified: ~2 min per plan on CPU) | The real experience; the one judges should see |
+| **Hosted (optional)** | Frontend → Render Static Site, Backend → Render Web Service | AI endpoints return `503 ai_unavailable` — Gemma is not on a Render instance | A public link for judges to try the non-AI features |
+
+### Why Gemma is not in the cloud (yet)
+
+Ollama + Gemma3:4b needs ~2.5-3 GB of RAM just for the model. Render's smallest
+Web Service tiers have far less and no GPU, so **running Gemma on a Render instance is
+not realistic**. We do **not** silently swap in a proprietary hosted model — that would
+break the "open-source AI at its core" premise. The app degrades gracefully: the
+backend stays up, garden/tasks/journal/weather all work, and the AI status pill shows
+"Gemma not ready" with a clear message.
+
+To get cloud AI you need a separate capable machine (a VPS or a GPU instance) running
+`ollama serve` with `gemma3:4b` pulled, then set `OLLAMA_URL` to it on the backend.
+
+### 1. Frontend (Render Static Site)
+
+Build command: `npm run build` (run in `frontend/`) · Publish dir: `frontend/dist`
+
+```bash
+VITE_API_URL=https://<your-backend>.onrender.com npm run build
+```
+
+`VITE_API_URL` is mandatory for any hosted deployment — Vite bakes it in at build time.
+If it is missing in production, the app shows "The API service is not configured for
+this site" instead of silently failing. `VITE_SENTRY_DSN` is opt-in.
+
+### 2. Backend (Render Web Service)
+
+Build from `backend/Dockerfile`. Health check: `GET /api/v1/health` (returns 200 even
+when Gemma is down, and now reports `sentry_enabled`).
+
+**Required env vars:**
+
+| Variable | Value | Notes |
+|---|---|---|
+| `DATABASE_PATH` | `/data/growmate.db` | Mount a persistent volume at `/data` (Render's filesystem is ephemeral) |
+| `CORS_ORIGINS` | `https://<your-frontend>.onrender.com` | Override the localhost default |
+| `OLLAMA_URL` | `http://localhost:11434` | Leave default for local dev; point at your own Ollama host for cloud AI |
+| `OLLAMA_TIMEOUT` | `180` | Local Gemma is slow on CPU |
+| `SENTRY_DSN` | (set in dashboard) | Opt-in error monitoring |
+| `SERPAPI_KEY` | (set in dashboard) | Opt-in web research |
+
+**Also:** set the Web Service to **1 replica** — SQLite is single-writer, and multiple
+replicas can corrupt the database.
+
+### 3. Render config (optional)
+
+`render.yaml` is a ready-to-use declarative config with placeholders for both services
+(`rootDir: frontend` / `publishDir: dist`, 1 replica, health check `/api/v1/health`, and a
+persistent volume at `/data`). Use it, or deploy from the web UI.
+
+### 4. Verify
+
+1. Frontend loads at its URL.
+2. `GET /api/v1/health` returns `200` with `status: ok`.
+3. Non-AI endpoints work: `PUT /garden`, `GET /tasks`, `GET /journal`.
+4. AI status pill shows "Gemma not ready" (expected) or "Gemma ready" if you pointed
+   `OLLAMA_URL` at a real Ollama host.
+5. Sentry: with `SENTRY_DSN` set, `/health` returns `sentry_enabled: true`.
+
 ## Configuration
 
 All settings are environment variables, read from `.env` at the repo root. See [`.env.example`](.env.example).
@@ -83,7 +154,7 @@ All settings are environment variables, read from `.env` at the repo root. See [
 ## Tests
 
 ```bash
-cd backend && pip install -r requirements-dev.txt && pytest -q   # 38 tests
+cd backend && pip install -r requirements-dev.txt && pytest -q   # 39 tests
 cd backend && ruff check . && ruff format --check .
 cd frontend && npm test                                            # 9 tests
 cd frontend && npm run build

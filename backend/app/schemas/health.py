@@ -11,3 +11,4 @@ class AIStatus(BaseModel):
 class HealthOut(BaseModel):
     status: str
     ai: AIStatus
+    sentry_enabled: bool

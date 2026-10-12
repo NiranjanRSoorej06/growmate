@@ -1,6 +1,9 @@
 // All HTTP access lives here. Every failure becomes an ApiError with a readable message.
 
-const BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "") + "/api/v1";
+// In development Vite proxies /api, so an empty VITE_API_URL is fine. In production
+// (e.g. a Render Static Site) the backend must be served from another origin, so
+// VITE_API_URL must point at it, and the build replaces this value at build time.
+const API_BASE = (import.meta.env.VITE_API_URL || "").replace(/\/$/, "") + "/api/v1";
 
 export class ApiError extends Error {
   constructor(message, { code = "unknown", status = 0, details = [] } = {}) {
@@ -13,11 +16,27 @@ export class ApiError extends Error {
 }
 
 async function request(path, { method = "GET", body, timeout = 15000 } = {}) {
+  // In production (a deployed site) VITE_API_URL must point at the backend;
+  // an empty value means this deployment isn't wired to an API.
+  const target =
+    import.meta.env.PROD && !import.meta.env.VITE_API_URL
+      ? undefined
+      : API_BASE + path;
+
+  if (!target) {
+    throw new ApiError(
+      "The API service is not configured for this site. Set VITE_API_URL " +
+        "(for example https://your-api.onrender.com) and rebuild the frontend, " +
+        "then refresh the page.",
+      { code: "not_configured" }
+    );
+  }
+
   const controller = new AbortController();
   const timer = setTimeout(() => controller.abort(), timeout);
   let res;
   try {
-    res = await fetch(BASE + path, {
+    res = await fetch(target, {
       method,
       headers: body ? { "Content-Type": "application/json" } : undefined,
       body: body ? JSON.stringify(body) : undefined,
